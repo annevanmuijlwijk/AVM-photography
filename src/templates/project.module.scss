@@ -1,0 +1,44 @@
+@import "../styles/values";
+@import "../styles/mixins";
+
+.container {
+  position: relative;
+}
+
+.content {
+  padding: $border-outer-space 1rem;
+
+  @include medium-width {
+    position: fixed;
+    width: 33.333vw;
+    height: $border-inner-space;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $border-outer-space 2rem;
+  }
+}
+
+.name {
+  text-transform: uppercase;
+  font-size: 28px;
+
+  @include medium-width {
+    font-size: 40px;
+  }
+
+  @include large-width {
+    font-size: 52px;
+  }
+}
+
+.photoContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: $border-outer-space;
+
+  @include medium-width {
+    padding-left: 33.333vw;
+  }
+}

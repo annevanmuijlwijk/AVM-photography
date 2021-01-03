@@ -1,41 +1,63 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+
 import Image from "gatsby-image";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import { useDefaultSEO } from "../lib/hooks/useDefaultSEO";
+
+import s from "./index.module.scss";
 
 const IndexPage = ({
   data: {
-    contentfulHomepage: { projects },
+    contentfulHomePage: {
+      projects,
+      seoTitle,
+      seoDescription: { seoDescription },
+    },
   },
-}) => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>AVM Photography</h1>
-    {projects.map(({ name, slug, poster }) => (
-      <Link to={`/projects/${slug}`} key={slug}>
-        <figure>
-          <Image alt="" fluid={poster.fluid} />
-          <figcaption>{name}</figcaption>
-        </figure>
-      </Link>
-    ))}
-  </Layout>
-);
+}) => {
+  const defaultSeo = useDefaultSEO();
+
+  return (
+    <Layout>
+      <SEO title={seoTitle || null} description={seoDescription || null} />
+      <h1 className={s.hidden}>{seoTitle || defaultSeo.title}</h1>
+      <div className={s.projectContainer}>
+        {projects.map(({ name, slug, poster }) => (
+          <Link to={`/projects/${slug}`} key={slug} className={s.projectOuter}>
+            <figure className={s.projectInner}>
+              <Image
+                alt={poster.description}
+                fluid={poster.fluid}
+                className={s.projectImage}
+              />
+              <figcaption className={s.projectName}>{name}</figcaption>
+            </figure>
+          </Link>
+        ))}
+      </div>
+    </Layout>
+  );
+};
 
 export default IndexPage;
 
 export const pageQuery = graphql`
   {
-    contentfulHomepage {
+    contentfulHomePage {
+      title
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
       projects {
         name
         slug
         poster {
-          fluid(maxWidth: 4000, background: "rgb:000000") {
-            ...GatsbyContentfulFluid_tracedSVG
-            ...GatsbyContentfulFluid_withWebp
+          fluid(maxWidth: 4000, background: "rgb:ffffff") {
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }

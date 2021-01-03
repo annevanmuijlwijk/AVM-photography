@@ -1,0 +1,56 @@
+@import "values";
+@import "~normalize.css/normalize";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: $gallery;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: $sans-serif;
+  color: $cod-gray;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: normal;
+}
+
+figure {
+  margin: 0;
+}
