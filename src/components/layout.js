@@ -1,38 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { useStaticQuery, graphql } from "gatsby"
+import { Link } from "gatsby";
 
-import "./layout.scss";
+import "../styles/main.scss";
+import s from "./layout.module.scss";
 
 const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
-
   return (
     <>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}
-        </footer>
-      </div>
+      <header className={s.header}>
+        <Link to="/" className={s.logo}>
+          AVM
+        </Link>
+        <nav className={s.nav}>
+          <Link className={s.link} to="/">
+            Projects
+          </Link>
+          <Link to="/about" className={s.link}>
+            About
+          </Link>
+        </nav>
+      </header>
+      <div className={s.borderInner}></div>
+      <div className={s.borderOuter}></div>
+      <main className={s.mainOuter}>
+        <div className={s.mainInner}>{children}</div>
+      </main>
     </>
   );
 };

@@ -1,0 +1,43 @@
+// Media queries
+$widths: (
+  "small": 768px,
+  "medium": 1024px,
+  "large": 1280px,
+  "x-large": 1536px,
+);
+
+@mixin small-width {
+  @media only screen and (min-width: map-get($widths, "small")) {
+    @content;
+  }
+}
+
+@mixin medium-width {
+  @media only screen and (min-width: map-get($widths, "medium")) {
+    @content;
+  }
+}
+
+@mixin large-width {
+  @media only screen and (min-width: map-get($widths, "large")) {
+    @content;
+  }
+}
+
+@mixin x-large-width {
+  @media only screen and (min-width: map-get($widths, "x-large")) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}

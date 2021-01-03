@@ -1,0 +1,90 @@
+@import "../styles/values";
+@import "../styles/mixins";
+
+.heroContainer {
+  @include small-width {
+    display: flex;
+  }
+}
+
+.heroContent {
+  padding: $border-outer-space 1rem 0;
+  width: 100%;
+
+  @include medium-width {
+    padding: $border-outer-space 2rem 0;
+  }
+}
+
+.heading {
+  font-size: 40px;
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+
+  @include small-width {
+    font-size: 60px;
+  }
+
+  @include medium-width {
+    font-size: 80px;
+    text-align: left;
+  }
+
+  @include large-width {
+    font-size: 100px;
+  }
+}
+
+.hero {
+  width: 100%;
+  margin-top: $border-outer-space;
+
+  @include small-width {
+    margin-top: 0;
+  }
+}
+
+.photoWrapper {
+  background: $dusty-gray;
+  height: $border-inner-space;
+
+  @include portrait {
+    height: 50vh;
+  }
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  font-family: $monospace;
+  margin-top: 1rem;
+  text-align: center;
+
+  @include small-width {
+    text-align: left;
+  }
+}
+
+.content {
+  font-size: 24px;
+  padding: 0 1rem $border-outer-space;
+  margin-top: calc(#{$border-outer-space} * 4);
+
+  p {
+    & + p {
+      margin-top: $border-outer-space;
+    }
+  }
+
+  @include medium-width {
+    width: 75%;
+    font-size: 36px;
+    padding: 0 2rem $border-outer-space;
+  }
+}

@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Folkert-Jan van der Pol <hello@folkertjan.nl>",
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -16,10 +17,13 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
     "node-sass": "^4.0.0",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-spring": "^8.0.27",
+    "react-use-gesture": "^9.0.0-beta.11"
   },
   "devDependencies": {
     "prettier": "2.2.1"

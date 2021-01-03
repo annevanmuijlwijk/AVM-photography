@@ -1,0 +1,82 @@
+@import "../styles/values";
+@import "../styles/mixins";
+
+.header {
+  position: fixed;
+  top: calc(#{$border-outer-space} - 1px);
+  left: $border-outer-space;
+  width: calc(100vw - (#{$border-outer-space} * 2));
+  height: $header-height;
+
+  z-index: 2;
+  border: 1px solid $cod-gray;
+  background: $gallery;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: none;
+}
+
+.logo {
+  padding-left: 1rem;
+
+  @include medium-width {
+    padding-left: 2rem;
+  }
+}
+
+.nav {
+  display: flex;
+  height: 100%;
+}
+
+.link {
+  text-decoration: none;
+  color: $cod-gray;
+  padding: 0 0.75rem;
+  height: 100%;
+  border-left: 1px solid $cod-gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: lowercase;
+
+  @include small-width {
+    padding: 0 1rem;
+  }
+}
+
+.border-outer {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  border: #{$border-outer-space} solid $gallery;
+  pointer-events: none;
+}
+
+.border-inner {
+  position: fixed;
+  top: calc(#{$border-outer-space} + #{$header-height} - 1px);
+  left: $border-outer-space;
+  width: calc(100vw - (#{$border-outer-space} * 2));
+  height: $border-height;
+  z-index: 2;
+
+  border: 1px solid $cod-gray;
+  pointer-events: none;
+}
+
+.mainOuter {
+  padding: calc(#{$border-outer-space} + #{$header-height}) $border-outer-space
+    $border-outer-space;
+}
+
+.mainInner {
+  position: relative;
+  min-height: calc(100vh - #{$header-height} - (#{$border-outer-space} * 2));
+}

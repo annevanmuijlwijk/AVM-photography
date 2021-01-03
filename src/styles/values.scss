@@ -1,0 +1,23 @@
+// FONTS
+$sans-serif: "Maven Pro", sans-serif;
+$monospace: "Cutive Mono", monospace;
+
+// COLORS
+$cod-gray: #101010;
+$dusty-gray: #959595;
+$alto: #dddddd;
+$gallery: #ebebeb;
+$white: #ffffff;
+
+// EASINGS
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+// GENERAL
+$header-height: 50px;
+$border-outer-space: 4vmin;
+$border-height: calc(
+  100vh - #{$header-height} - (#{$border-outer-space} * 2) + 2px
+);
+$border-inner-space: calc(
+  100vh - #{$header-height} - (#{$border-outer-space} * 2)
+);

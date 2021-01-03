@@ -1,9 +1,12 @@
 const contentfulConfig = {
   spaceId: "79mt3m3eaftp",
-  accessToken: "3jLAzSEnAaEF8LTXqiM_cm6xT0W3-ZPnsjbCfgM_MsI",
+  accessToken:
+    process.env.NODE_ENV === "development"
+      ? "Hs6bicMR2GSQ7iXI-Kcs_PG1p9HBaTH6-9hIZnHNsEM"
+      : "3jLAzSEnAaEF8LTXqiM_cm6xT0W3-ZPnsjbCfgM_MsI",
+  environment:
+    process.env.NODE_ENV === "development" ? "development" : "master",
 };
-
-// management access token CFPAT-cT6z2mGswZ2eHnqX8bhERnJnuODfcsPrPV9SbVHqVac
 
 module.exports = {
   siteMetadata: {
