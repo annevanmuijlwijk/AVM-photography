@@ -6,6 +6,7 @@
   "author": "Folkert-Jan van der Pol <hello@folkertjan.nl>",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
+    "flickity": "^2.2.2",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
     "gatsby-plugin-manifest": "^2.6.1",
@@ -21,6 +22,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-flickity-component": "^3.6.1",
     "react-helmet": "^6.1.0",
     "react-spring": "^8.0.27",
     "react-use-gesture": "^9.0.0-beta.11"

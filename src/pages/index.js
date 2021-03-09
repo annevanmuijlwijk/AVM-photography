@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import Flickity from "react-flickity-component";
 
 import Image from "gatsby-image";
 
@@ -8,6 +9,13 @@ import SEO from "../components/seo";
 import { useDefaultSEO } from "../lib/hooks/useDefaultSEO";
 
 import s from "./index.module.scss";
+
+const flickityOptions = {
+  prevNextButtons: false,
+  pageDots: false,
+  cellAlign: "left",
+  contain: true,
+};
 
 const IndexPage = ({
   data: {
@@ -20,24 +28,55 @@ const IndexPage = ({
 }) => {
   const defaultSeo = useDefaultSEO();
 
+  const isSmallWidth = window.innerWidth >= 768;
+
   return (
     <Layout>
       <SEO title={seoTitle || null} description={seoDescription || null} />
       <h1 className={s.hidden}>{seoTitle || defaultSeo.title}</h1>
-      <div className={s.projectContainer}>
-        {projects.map(({ name, slug, poster }) => (
-          <Link to={`/projects/${slug}`} key={slug} className={s.projectOuter}>
-            <figure className={s.projectInner}>
-              <Image
-                alt={poster.description}
-                fluid={poster.fluid}
-                className={s.projectImage}
-              />
-              <figcaption className={s.projectName}>{name}</figcaption>
-            </figure>
-          </Link>
-        ))}
-      </div>
+      {isSmallWidth ? (
+        <Flickity
+          className={s.projectContainer}
+          options={flickityOptions}
+          static
+        >
+          {projects.map(({ name, slug, poster }) => (
+            <Link
+              to={`/projects/${slug}`}
+              key={slug}
+              className={s.projectOuter}
+            >
+              <figure className={s.projectInner}>
+                <Image
+                  alt={poster.description}
+                  fluid={poster.fluid}
+                  className={s.projectImage}
+                />
+                <figcaption className={s.projectName}>{name}</figcaption>
+              </figure>
+            </Link>
+          ))}
+        </Flickity>
+      ) : (
+        <div className={s.projectContainer}>
+          {projects.map(({ name, slug, poster }) => (
+            <Link
+              to={`/projects/${slug}`}
+              key={slug}
+              className={s.projectOuter}
+            >
+              <figure className={s.projectInner}>
+                <Image
+                  alt={poster.description}
+                  fluid={poster.fluid}
+                  className={s.projectImage}
+                />
+                <figcaption className={s.projectName}>{name}</figcaption>
+              </figure>
+            </Link>
+          ))}
+        </div>
+      )}
     </Layout>
   );
 };

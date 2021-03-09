@@ -8,30 +8,40 @@
 }
 
 .projectContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: $border-outer-space;
-
   @include small-width {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include medium-width {
-    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    outline: none;
+    -webkit-tap-highlight-color: none;
   }
 }
 
 .projectOuter {
+  position: relative;
   text-decoration: none;
   display: block;
-  position: relative;
   background: $dusty-gray;
+  width: 100%;
+
+  .projectOuter + & {
+    margin-top: 60px;
+  }
+
+  @include small-width {
+    width: calc(50% - #{$border-outer-space});
+    margin-right: $border-outer-space;
+
+    .projectOuter + & {
+      margin-top: unset;
+    }
+  }
+
+  @include medium-width {
+    width: calc(33.33% - #{$border-outer-space});
+  }
 }
 
 .projectInner {
@@ -46,22 +56,29 @@
 
 .projectName {
   position: absolute;
-  top: 0;
-  left: 0;
   bottom: 0;
-  right: 0;
-  background: rgba($cod-gray, 0.85);
-  backdrop-filter: blur(5px);
-  color: $white;
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  left: 0;
+  transform: translateY(100%);
+  width: 100%;
+  text-align: left;
+  padding-top: 8px;
+  padding-left: 8px;
+  color: $cod-gray;
+
+  font-size: 20px;
 
   @include hover {
+    opacity: 0;
+
     .projectOuter:hover & {
       opacity: 1;
     }
+  }
+
+  @include small-width {
+    text-align: center;
+    padding-top: 16px;
+    padding-left: 0;
+    font-size: 18px;
   }
 }
