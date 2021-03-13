@@ -28,7 +28,8 @@ const IndexPage = ({
 }) => {
   const defaultSeo = useDefaultSEO();
 
-  const isSmallWidth = window.innerWidth >= 768;
+  const isSmallWidth =
+    typeof window !== `undefined` ? window.innerWidth >= 768 : true;
 
   return (
     <Layout>
