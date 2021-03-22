@@ -27,7 +27,7 @@ const Project = ({
       description,
       photoGroups,
       seoTitle,
-      seoDescription: { seoDescription } = {},
+      seoDescription,
     },
   },
 }) => {
@@ -35,7 +35,10 @@ const Project = ({
 
   return (
     <Layout>
-      <SEO title={seoTitle || null} description={seoDescription || null} />
+      <SEO
+        title={seoTitle || null}
+        description={seoDescription?.seoDescription || null}
+      />
       <div className={s.container}>
         <div className={s.content}>
           <h1 className={s.name}>{name}</h1>

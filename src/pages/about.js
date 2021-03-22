@@ -24,16 +24,19 @@ const IndexPage = ({
     contentfulAboutPage: {
       heading,
       seoTitle,
-      seoDescription: { seoDescription } = {},
+      seoDescription,
       heroImage,
-      heroImageCaption: { heroImageCaption } = {},
+      heroImageCaption,
       content,
     },
   },
 }) => {
   return (
     <Layout>
-      <SEO title={seoTitle || null} description={seoDescription || null} />
+      <SEO
+        title={seoTitle || null}
+        description={seoDescription?.seoDescription || null}
+      />
       <div className={s.heroContainer}>
         <div className={s.heroContent}>
           <h1 className={s.heading}>{heading}</h1>
@@ -44,7 +47,9 @@ const IndexPage = ({
             <Image fluid={heroImage.fluid} className={s.photo} />
           </div>
 
-          <figcaption className={s.caption}>{heroImageCaption}</figcaption>
+          <figcaption className={s.caption}>
+            {heroImageCaption?.heroImageCaption}
+          </figcaption>
         </figure>
       </div>
       <div className={s.content}>
