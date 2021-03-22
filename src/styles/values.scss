@@ -5,6 +5,7 @@ $monospace: "Cutive Mono", monospace;
 // COLORS
 $cod-gray: #101010;
 $dusty-gray: #959595;
+$silver: #c5c5c5;
 $alto: #dddddd;
 $gallery: #ebebeb;
 $white: #ffffff;
@@ -13,8 +14,8 @@ $white: #ffffff;
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
 // GENERAL
-$header-height: 50px;
-$border-outer-space: 4vmin;
+$header-height: 40px;
+$border-outer-space: 3vmin;
 $border-height: calc(
   100vh - #{$header-height} - (#{$border-outer-space} * 2) + 2px
 );

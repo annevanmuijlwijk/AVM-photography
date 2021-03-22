@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import { useMediaQuery } from "beautiful-react-hooks";
 import Flickity from "react-flickity-component";
 
 import Image from "gatsby-image";
@@ -28,26 +29,26 @@ const IndexPage = ({
 }) => {
   const defaultSeo = useDefaultSEO();
 
-  const isSmallWidth =
-    typeof window !== `undefined` ? window.innerWidth >= 768 : true;
+  const isSmallWidth = useMediaQuery("(min-width: 768px");
 
   return (
     <Layout>
       <SEO title={seoTitle || null} description={seoDescription || null} />
       <h1 className={s.hidden}>{seoTitle || defaultSeo.title}</h1>
       {isSmallWidth ? (
-        <Flickity
-          className={s.projectContainer}
-          options={flickityOptions}
-          static
-        >
+        <Flickity className={s.projectContainer} options={flickityOptions}>
           {projects.map(({ name, slug, poster }) => (
             <Link
               to={`/projects/${slug}`}
               key={slug}
               className={s.projectOuter}
             >
-              <figure className={s.projectInner}>
+              <figure
+                className={s.projectInner}
+                style={{
+                  width: `calc(60vh * ${poster.fluid.aspectRatio} )`,
+                }}
+              >
                 <Image
                   alt={poster.description}
                   fluid={poster.fluid}
@@ -98,6 +99,7 @@ export const pageQuery = graphql`
         poster {
           fluid(maxWidth: 4000, background: "rgb:ffffff") {
             ...GatsbyContentfulFluid_withWebp_noBase64
+            aspectRatio
           }
         }
       }
