@@ -20,11 +20,7 @@ const flickityOptions = {
 
 const IndexPage = ({
   data: {
-    contentfulHomePage: {
-      projects,
-      seoTitle,
-      seoDescription: { seoDescription } = {},
-    },
+    contentfulHomePage: { projects, seoTitle, seoDescription },
   },
 }) => {
   const defaultSeo = useDefaultSEO();
@@ -33,7 +29,10 @@ const IndexPage = ({
 
   return (
     <Layout>
-      <SEO title={seoTitle || null} description={seoDescription || null} />
+      <SEO
+        title={seoTitle || null}
+        description={seoDescription?.seoDescription || null}
+      />
       <h1 className={s.hidden}>{seoTitle || defaultSeo.title}</h1>
       {isSmallWidth ? (
         <Flickity className={s.projectContainer} options={flickityOptions}>
