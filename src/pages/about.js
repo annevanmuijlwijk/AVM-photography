@@ -1,12 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Image from "gatsby-image";
+import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 import s from "./about.module.scss";
+
+const richTextOptions = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <p className={s.contentParagraph}>{children}</p>
+    ),
+  },
+  renderText: (text) =>
+    text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
+};
 
 const IndexPage = ({
   data: {
@@ -37,7 +48,7 @@ const IndexPage = ({
         </figure>
       </div>
       <div className={s.content}>
-        {documentToReactComponents(JSON.parse(content.raw))}
+        {documentToReactComponents(JSON.parse(content.raw), richTextOptions)}
       </div>
     </Layout>
   );

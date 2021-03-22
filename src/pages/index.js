@@ -49,11 +49,14 @@ const IndexPage = ({
                   width: `calc(60vh * ${poster.fluid.aspectRatio} )`,
                 }}
               >
-                <Image
-                  alt={poster.description}
-                  fluid={poster.fluid}
-                  className={s.projectImage}
-                />
+                <div class={s.projectImageWrapper}>
+                  <Image
+                    alt={poster.description}
+                    fluid={poster.fluid}
+                    className={s.projectImage}
+                  />
+                </div>
+
                 <figcaption className={s.projectName}>{name}</figcaption>
               </figure>
             </Link>
@@ -68,11 +71,13 @@ const IndexPage = ({
               className={s.projectOuter}
             >
               <figure className={s.projectInner}>
-                <Image
-                  alt={poster.description}
-                  fluid={poster.fluid}
-                  className={s.projectImage}
-                />
+                <div class={s.projectImageWrapper}>
+                  <Image
+                    alt={poster.description}
+                    fluid={poster.fluid}
+                    className={s.projectImage}
+                  />
+                </div>
                 <figcaption className={s.projectName}>{name}</figcaption>
               </figure>
             </Link>

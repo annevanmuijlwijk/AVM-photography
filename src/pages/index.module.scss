@@ -8,6 +8,7 @@
 }
 
 .projectContainer {
+  padding-bottom: $border-outer-space;
   @include small-width {
     position: absolute;
     top: 50%;
@@ -24,20 +25,23 @@
   position: relative;
   text-decoration: none;
   display: block;
-  background: $silver;
   max-width: 100%;
 
   .projectOuter + & {
-    margin-top: 60px;
+    margin-top: calc(#{$border-outer-space} * 2);
   }
 
   @include small-width {
-    margin-right: $border-outer-space;
+    margin-left: $border-outer-space;
 
     .projectOuter + & {
       margin-top: unset;
     }
   }
+}
+
+.projectImageWrapper {
+  background: $silver;
 }
 
 .projectImage {
@@ -47,10 +51,6 @@
 }
 
 .projectName {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
   width: 100%;
   text-align: left;
   padding-top: 8px;
@@ -59,18 +59,14 @@
 
   font-size: 20px;
 
-  @include hover {
-    opacity: 0;
-
-    .projectOuter:hover & {
-      opacity: 1;
-    }
-  }
-
   @include small-width {
-    text-align: center;
     padding-top: 16px;
     padding-left: 0;
     font-size: 18px;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
   }
 }

@@ -8,12 +8,8 @@
 }
 
 .heroContent {
-  padding: $border-outer-space 1rem 0;
+  padding: $border-outer-space;
   width: 100%;
-
-  @include medium-width {
-    padding: $border-outer-space 2rem 0;
-  }
 }
 
 .heading {
@@ -24,16 +20,16 @@
   text-align: center;
 
   @include small-width {
-    font-size: 60px;
+    font-size: 50px;
   }
 
   @include medium-width {
-    font-size: 80px;
+    font-size: 60px;
     text-align: left;
   }
 
   @include large-width {
-    font-size: 100px;
+    font-size: 70px;
   }
 }
 
@@ -73,18 +69,17 @@
 
 .content {
   font-size: 24px;
-  padding: 0 1rem $border-outer-space;
+  padding: $border-outer-space;
   margin-top: calc(#{$border-outer-space} * 4);
-
-  p {
-    & + p {
-      margin-top: $border-outer-space;
-    }
-  }
 
   @include medium-width {
     width: 75%;
     font-size: 36px;
-    padding: 0 2rem $border-outer-space;
+  }
+}
+
+.contentParagraph {
+  .contentParagraph + & {
+    margin-top: $border-outer-space;
   }
 }
