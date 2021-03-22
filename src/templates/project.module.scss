@@ -42,3 +42,12 @@
     padding-left: 33.333vw;
   }
 }
+
+.photoGroup {
+  @include small-width {
+    display: grid;
+    grid-gap: $border-outer-space;
+    grid-auto-flow: column;
+    align-items: center;
+  }
+}

@@ -13,9 +13,9 @@ const IndexPage = ({
     contentfulAboutPage: {
       heading,
       seoTitle,
-      seoDescription: { seoDescription },
+      seoDescription: { seoDescription } = {},
       heroImage,
-      heroImageCaption: { heroImageCaption },
+      heroImageCaption: { heroImageCaption } = {},
       content,
     },
   },
