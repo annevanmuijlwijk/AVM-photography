@@ -32,11 +32,10 @@
   }
 }
 
-.photoContainer {
+.photoGroups {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: $border-outer-space;
+
+  padding-bottom: $border-outer-space;
 
   @include medium-width {
     padding-left: 33.333vw;
@@ -44,10 +43,39 @@
 }
 
 .photoGroup {
-  @include small-width {
-    display: grid;
-    grid-gap: $border-outer-space;
-    grid-auto-flow: column;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .photoGroup + & {
+    margin-top: $border-outer-space;
   }
+
+  @include small-width {
+    grid-auto-flow: column;
+  }
+}
+
+.photoContainer {
+  flex: 1;
+
+  .photoContainer + & {
+    margin-top: $border-outer-space;
+  }
+
+  @include small-width {
+    .photoContainer + & {
+      margin-top: 0;
+      margin-left: $border-outer-space;
+    }
+  }
+}
+
+.photoWrapper {
+  background: $silver;
+}
+
+.photoDescription {
+  margin-top: 8px;
+  font-family: $monospace;
 }

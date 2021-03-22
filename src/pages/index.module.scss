@@ -16,6 +16,7 @@
     width: 100%;
     outline: none;
     -webkit-tap-highlight-color: none;
+    height: 60vh;
   }
 }
 
@@ -23,29 +24,20 @@
   position: relative;
   text-decoration: none;
   display: block;
-  background: $dusty-gray;
-  width: 100%;
+  background: $silver;
+  max-width: 100%;
 
   .projectOuter + & {
     margin-top: 60px;
   }
 
   @include small-width {
-    width: calc(50% - #{$border-outer-space});
     margin-right: $border-outer-space;
 
     .projectOuter + & {
       margin-top: unset;
     }
   }
-
-  @include medium-width {
-    width: calc(33.33% - #{$border-outer-space});
-  }
-}
-
-.projectInner {
-  width: 100%;
 }
 
 .projectImage {
