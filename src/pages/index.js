@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import { useMediaQuery } from "beautiful-react-hooks";
 import Flickity from "react-flickity-component";
 
 import Image from "gatsby-image";
@@ -22,37 +23,40 @@ const IndexPage = ({
     contentfulHomePage: {
       projects,
       seoTitle,
-      seoDescription: { seoDescription },
+      seoDescription: { seoDescription } = {},
     },
   },
 }) => {
   const defaultSeo = useDefaultSEO();
 
-  const isSmallWidth =
-    typeof window !== `undefined` ? window.innerWidth >= 768 : true;
+  const isSmallWidth = useMediaQuery("(min-width: 768px");
 
   return (
     <Layout>
       <SEO title={seoTitle || null} description={seoDescription || null} />
       <h1 className={s.hidden}>{seoTitle || defaultSeo.title}</h1>
       {isSmallWidth ? (
-        <Flickity
-          className={s.projectContainer}
-          options={flickityOptions}
-          static
-        >
+        <Flickity className={s.projectContainer} options={flickityOptions}>
           {projects.map(({ name, slug, poster }) => (
             <Link
               to={`/projects/${slug}`}
               key={slug}
               className={s.projectOuter}
             >
-              <figure className={s.projectInner}>
-                <Image
-                  alt={poster.description}
-                  fluid={poster.fluid}
-                  className={s.projectImage}
-                />
+              <figure
+                className={s.projectInner}
+                style={{
+                  width: `calc(60vh * ${poster.fluid.aspectRatio} )`,
+                }}
+              >
+                <div class={s.projectImageWrapper}>
+                  <Image
+                    alt={poster.description}
+                    fluid={poster.fluid}
+                    className={s.projectImage}
+                  />
+                </div>
+
                 <figcaption className={s.projectName}>{name}</figcaption>
               </figure>
             </Link>
@@ -67,11 +71,13 @@ const IndexPage = ({
               className={s.projectOuter}
             >
               <figure className={s.projectInner}>
-                <Image
-                  alt={poster.description}
-                  fluid={poster.fluid}
-                  className={s.projectImage}
-                />
+                <div class={s.projectImageWrapper}>
+                  <Image
+                    alt={poster.description}
+                    fluid={poster.fluid}
+                    className={s.projectImage}
+                  />
+                </div>
                 <figcaption className={s.projectName}>{name}</figcaption>
               </figure>
             </Link>
@@ -98,6 +104,7 @@ export const pageQuery = graphql`
         poster {
           fluid(maxWidth: 4000, background: "rgb:ffffff") {
             ...GatsbyContentfulFluid_withWebp_noBase64
+            aspectRatio
           }
         }
       }

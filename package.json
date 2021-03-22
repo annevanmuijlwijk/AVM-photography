@@ -6,6 +6,7 @@
   "author": "Folkert-Jan van der Pol <hello@folkertjan.nl>",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
+    "beautiful-react-hooks": "^0.31.1",
     "flickity": "^2.2.2",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",

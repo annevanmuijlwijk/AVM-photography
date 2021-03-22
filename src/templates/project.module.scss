@@ -6,7 +6,7 @@
 }
 
 .content {
-  padding: $border-outer-space 1rem;
+  padding: 20px $border-outer-space;
 
   @include medium-width {
     position: fixed;
@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: $border-outer-space 2rem;
+    padding: $border-outer-space;
   }
 }
 
@@ -32,13 +32,64 @@
   }
 }
 
-.photoContainer {
+.descriptionParagraph {
+  .descriptionParagraph + & {
+    margin-top: 1em;
+  }
+}
+
+.photoGroups {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: $border-outer-space;
+
+  padding-bottom: $border-outer-space;
 
   @include medium-width {
     padding-left: 33.333vw;
+  }
+}
+
+.photoGroup {
+  .photoGroup + & {
+    margin-top: 20px;
+  }
+
+  @include small-width {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .photoGroup + & {
+      margin-top: $border-outer-space;
+    }
+  }
+}
+
+.photoContainer {
+  flex: 1;
+
+  .photoContainer + & {
+    margin-top: 20px;
+  }
+
+  @include small-width {
+    .photoContainer + & {
+      margin-top: 0;
+      margin-left: $border-outer-space;
+    }
+  }
+}
+
+.photoWrapper {
+  background: $silver;
+}
+
+.photoDescription {
+  margin-top: 8px;
+  font-family: $monospace;
+
+  margin-left: $border-outer-space;
+
+  @include small-width {
+    margin-left: unset;
   }
 }

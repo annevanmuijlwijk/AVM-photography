@@ -5,8 +5,7 @@ const contentfulConfig = {
     process.env.NODE_ENV === "development"
       ? "Hs6bicMR2GSQ7iXI-Kcs_PG1p9HBaTH6-9hIZnHNsEM"
       : "0illIhccDTTfGRCFDwJE8gfc3AUePBhzvApZMMRnfVY",
-  environment:
-    process.env.NODE_ENV === "development" ? "development" : "master",
+  environment: "master",
 };
 
 module.exports = {
