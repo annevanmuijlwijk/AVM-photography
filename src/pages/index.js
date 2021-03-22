@@ -18,6 +18,8 @@ const flickityOptions = {
   contain: true,
 };
 
+const useMedia = typeof window !== "undefined" ? useMediaQuery : () => false;
+
 const IndexPage = ({
   data: {
     contentfulHomePage: { projects, seoTitle, seoDescription },
@@ -25,7 +27,7 @@ const IndexPage = ({
 }) => {
   const defaultSeo = useDefaultSEO();
 
-  const isSmallWidth = useMediaQuery("(min-width: 768px");
+  const isSmallWidth = useMedia("(min-width: 768px");
 
   return (
     <Layout>
