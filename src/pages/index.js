@@ -22,7 +22,7 @@ const IndexPage = ({
     contentfulHomePage: {
       projects,
       seoTitle,
-      seoDescription: { seoDescription },
+      seoDescription: { seoDescription } = {},
     },
   },
 }) => {

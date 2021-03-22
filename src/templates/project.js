@@ -13,9 +13,9 @@ const Project = ({
     contentfulProject: {
       name,
       description,
-      photos,
+      photoGroups,
       seoTitle,
-      seoDescription: { seoDescription },
+      seoDescription: { seoDescription } = {},
     },
   },
 }) => {
@@ -31,13 +31,17 @@ const Project = ({
         </div>
 
         <div className={s.photoContainer}>
-          {photos.map(({ id, fluid, description }) => (
-            <Image
-              alt={description}
-              fluid={fluid}
-              key={id}
-              className={s.photo}
-            />
+          {photoGroups.map(({ id, photos }) => (
+            <div key={id} className={s.photoGroup}>
+              {photos.map(({ id, fluid, description }) => (
+                <Image
+                  alt={description}
+                  fluid={fluid}
+                  key={id}
+                  className={s.photo}
+                />
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -58,10 +62,13 @@ export const pageQuery = graphql`
       description {
         raw
       }
-      photos {
+      photoGroups {
         id
-        fluid(maxWidth: 4000, background: "rgb:ffffff") {
-          ...GatsbyContentfulFluid_withWebp_noBase64
+        photos {
+          id
+          fluid(maxWidth: 4000, background: "rgb:ffffff") {
+            ...GatsbyContentfulFluid_withWebp_noBase64
+          }
         }
       }
     }
