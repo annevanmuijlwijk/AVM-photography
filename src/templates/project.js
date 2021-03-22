@@ -20,6 +20,8 @@ const richTextOptions = {
     text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
 };
 
+const useMedia = typeof window !== "undefined" ? useMediaQuery : () => false;
+
 const Project = ({
   data: {
     contentfulProject: {
@@ -31,7 +33,7 @@ const Project = ({
     },
   },
 }) => {
-  const isSmallWidth = useMediaQuery("(min-width: 768px");
+  const isSmallWidth = useMedia("(min-width: 768px");
 
   return (
     <Layout>
