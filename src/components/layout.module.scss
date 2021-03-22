@@ -19,11 +19,7 @@
 }
 
 .logo {
-  padding-left: 1rem;
-
-  @include medium-width {
-    padding-left: 2rem;
-  }
+  padding-left: $border-outer-space;
 }
 
 .nav {
@@ -34,7 +30,7 @@
 .link {
   text-decoration: none;
   color: $cod-gray;
-  padding: 0 0.75rem;
+  padding: 0 0.75rem 2px;
   height: 100%;
   border-left: 1px solid $cod-gray;
   display: flex;
@@ -43,7 +39,7 @@
   text-transform: lowercase;
 
   @include small-width {
-    padding: 0 1rem;
+    padding: 0 12px 2px;
   }
 }
 

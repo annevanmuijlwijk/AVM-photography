@@ -2,12 +2,23 @@ import React from "react";
 import { graphql } from "gatsby";
 import Image from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
 import { useMediaQuery } from "beautiful-react-hooks";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo.js";
 
 import s from "./project.module.scss";
+
+const richTextOptions = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <p className={s.descriptionParagraph}>{children}</p>
+    ),
+  },
+  renderText: (text) =>
+    text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
+};
 
 const Project = ({
   data: {
@@ -29,7 +40,12 @@ const Project = ({
         <div className={s.content}>
           <h1 className={s.name}>{name}</h1>
           {description && (
-            <div>{documentToReactComponents(JSON.parse(description.raw))}</div>
+            <div className={s.description}>
+              {documentToReactComponents(
+                JSON.parse(description.raw),
+                richTextOptions
+              )}
+            </div>
           )}
         </div>
 
