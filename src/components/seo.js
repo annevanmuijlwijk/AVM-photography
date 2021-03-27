@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 
-import { useDefaultSEO } from "../lib/hooks/useDefaultSEO";
+import { useDefaultSEO } from "../lib/hooks/use-default-seo";
 
 function SEO({ description, lang, meta, title }) {
   const defaultSeo = useDefaultSEO();

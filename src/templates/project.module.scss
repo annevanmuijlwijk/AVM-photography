@@ -41,9 +41,8 @@
 .photoGroups {
   width: 100%;
 
-  padding-bottom: $border-outer-space;
-
   @include medium-width {
+    padding: $border-outer-space;
     padding-left: 33.333vw;
   }
 }
@@ -55,7 +54,7 @@
 
   @include small-width {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
 
     .photoGroup + & {
@@ -66,21 +65,25 @@
 
 .photoContainer {
   flex: 1;
+  margin: 0 auto;
 
   .photoContainer + & {
     margin-top: 20px;
   }
 
   @include small-width {
+    margin-left: $border-outer-space;
+    margin-right: unset;
+
     .photoContainer + & {
       margin-top: 0;
-      margin-left: $border-outer-space;
     }
   }
 }
 
 .photoWrapper {
   background: $silver;
+  width: 100%;
 }
 
 .photoDescription {
