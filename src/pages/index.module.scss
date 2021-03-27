@@ -8,17 +8,15 @@
 }
 
 .projectContainer {
-  padding-bottom: $border-outer-space;
-  @include small-width {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    outline: none;
-    -webkit-tap-highlight-color: none;
-    height: 60vh;
-  }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  outline: none;
+  -webkit-tap-highlight-color: none;
+  height: 60vh;
+  padding: $border-outer-space;
 }
 
 .projectOuter {
@@ -26,18 +24,7 @@
   text-decoration: none;
   display: block;
   max-width: 100%;
-
-  .projectOuter + & {
-    margin-top: calc(#{$border-outer-space} * 2);
-  }
-
-  @include small-width {
-    margin-left: $border-outer-space;
-
-    .projectOuter + & {
-      margin-top: unset;
-    }
-  }
+  margin-left: $border-outer-space;
 }
 
 .projectImageWrapper {
