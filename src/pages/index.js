@@ -1,9 +1,10 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import { useMediaQuery } from "beautiful-react-hooks";
 import Flickity from "react-flickity-component";
 
 import Image from "gatsby-image";
+
+import useIsSmallWidth from "../hooks/use-is-small-width";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -18,8 +19,6 @@ const flickityOptions = {
   contain: true,
 };
 
-const useMedia = typeof window !== "undefined" ? useMediaQuery : () => false;
-
 const IndexPage = ({
   data: {
     contentfulHomePage: { projects, seoTitle, seoDescription },
@@ -27,7 +26,7 @@ const IndexPage = ({
 }) => {
   const defaultSeo = useDefaultSEO();
 
-  const isSmallWidth = useMedia("(min-width: 768px");
+  const isSmallWidth = useIsSmallWidth();
 
   return (
     <Layout>
@@ -50,7 +49,7 @@ const IndexPage = ({
                   width: `calc(60vh * ${poster.fluid.aspectRatio} )`,
                 }}
               >
-                <div class={s.projectImageWrapper}>
+                <div className={s.projectImageWrapper}>
                   <Image
                     alt={poster.description}
                     fluid={poster.fluid}
@@ -72,7 +71,7 @@ const IndexPage = ({
               className={s.projectOuter}
             >
               <figure className={s.projectInner}>
-                <div class={s.projectImageWrapper}>
+                <div className={s.projectImageWrapper}>
                   <Image
                     alt={poster.description}
                     fluid={poster.fluid}
