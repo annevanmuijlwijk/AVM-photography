@@ -3,7 +3,8 @@ import { graphql } from "gatsby";
 import Image from "gatsby-image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
-import { useMediaQuery } from "beautiful-react-hooks";
+
+import useIsSmallWidth from "../hooks/use-is-small-width";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo.js";
@@ -20,8 +21,6 @@ const richTextOptions = {
     text.split("\n").flatMap((text, i) => [i > 0 && <br />, text]),
 };
 
-const useMedia = typeof window !== "undefined" ? useMediaQuery : () => false;
-
 const Project = ({
   data: {
     contentfulProject: {
@@ -33,8 +32,6 @@ const Project = ({
     },
   },
 }) => {
-  const isSmallWidth = useMedia("(min-width: 768px");
-
   return (
     <Layout>
       <SEO
@@ -62,9 +59,7 @@ const Project = ({
                   className={s.photoContainer}
                   key={id}
                   style={{
-                    maxWidth: isSmallWidth
-                      ? `calc(80vh * ${fluid.aspectRatio})`
-                      : "100%",
+                    maxWidth: `calc(80vh * ${fluid.aspectRatio})`,
                   }}
                 >
                   <div className={s.photoWrapper}>
