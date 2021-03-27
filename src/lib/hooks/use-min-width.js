@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import debounce from "../utils/debounce";
 
 const useMinWidth = (width) => {
   const [match, setMatch] = useState(
@@ -8,14 +9,14 @@ const useMinWidth = (width) => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const checkMatch = () => {
+    const debouncedSetMatch = debounce(() => {
       setMatch(window.innerWidth > width);
-    };
+    });
 
-    checkMatch();
-    window.addEventListener("resize", checkMatch);
+    setMatch(window.innerWidth > width);
+    window.addEventListener("resize", debouncedSetMatch);
 
-    return () => window.removeEventListener("resize", checkMatch);
+    return () => window.removeEventListener("resize", debouncedSetMatch);
   }, [width]);
 
   return match;
