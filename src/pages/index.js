@@ -16,7 +16,8 @@ const flickityOptions = {
   prevNextButtons: false,
   pageDots: false,
   cellAlign: "left",
-  contain: true,
+  wrapAround: true,
+  freeScroll: true,
 };
 
 const IndexPage = ({

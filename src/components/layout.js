@@ -2,10 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
+import mergeClassNames from "../lib/template/merge-class-names";
+
 import "../styles/main.scss";
 import s from "./layout.module.scss";
 
+const pageGroups = ["projects", "about"];
+
 const Layout = ({ children }) => {
+  const activePageGroup =
+    pageGroups.find((group) => {
+      if (typeof window === "undefined") return false;
+      return window.location.pathname.includes(group);
+    }) || pageGroups[0];
+
   return (
     <>
       <header className={s.header}>
@@ -13,10 +23,24 @@ const Layout = ({ children }) => {
           AVM
         </Link>
         <nav className={s.nav}>
-          <Link className={s.link} to="/">
+          <Link
+            className={
+              activePageGroup === pageGroups[0]
+                ? mergeClassNames(s.link, s.activeLink)
+                : s.link
+            }
+            to="/"
+          >
             Projects
           </Link>
-          <Link to="/about" className={s.link}>
+          <Link
+            className={
+              activePageGroup === pageGroups[1]
+                ? mergeClassNames(s.link, s.activeLink)
+                : s.link
+            }
+            to="/about"
+          >
             About
           </Link>
         </nav>

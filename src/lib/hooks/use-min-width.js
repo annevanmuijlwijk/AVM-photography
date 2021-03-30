@@ -1,23 +1,16 @@
-import { useState, useEffect } from "react";
-import debounce from "../utils/debounce";
+import { useState } from "react";
+import { useWindowResize, useDebouncedFn } from "beautiful-react-hooks";
 
 const useMinWidth = (width) => {
   const [match, setMatch] = useState(
     typeof window === "undefined" ? false : window.innerWidth > width
   );
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const debouncedSetMatch = debounce(() => {
-      setMatch(window.innerWidth > width);
-    });
-
+  const handleWindowResize = useDebouncedFn(() => {
     setMatch(window.innerWidth > width);
-    window.addEventListener("resize", debouncedSetMatch);
+  });
 
-    return () => window.removeEventListener("resize", debouncedSetMatch);
-  }, [width]);
+  useWindowResize(handleWindowResize);
 
   return match;
 };
