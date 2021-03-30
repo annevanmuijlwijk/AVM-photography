@@ -33,6 +33,8 @@
 }
 
 .descriptionParagraph {
+  font-family: $monospace;
+
   .descriptionParagraph + & {
     margin-top: 1em;
   }
@@ -84,11 +86,12 @@
 .photoWrapper {
   background: $silver;
   width: 100%;
+  cursor: zoom-in;
 }
 
 .photoDescription {
   margin-top: 8px;
-  font-family: $monospace;
+  font-family: $sans-serif;
 
   margin-left: $border-outer-space;
 
