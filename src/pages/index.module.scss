@@ -15,8 +15,15 @@
   width: 100%;
   outline: none;
   -webkit-tap-highlight-color: none;
-  height: 60vh;
   padding: $border-outer-space;
+
+  overflow-x: hidden;
+  white-space: nowrap;
+  width: 100vw;
+
+  &.flickity-enabled {
+    width: 100%;
+  }
 }
 
 .projectOuter {
@@ -50,10 +57,5 @@
     padding-top: 16px;
     padding-left: 0;
     font-size: 18px;
-
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateY(100%);
   }
 }

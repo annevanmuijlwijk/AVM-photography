@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
-
-import debounce from "../utils/debounce";
+import { useState } from "react";
+import { useWindowResize, useDebouncedFn } from "beautiful-react-hooks";
 
 const useCurrentWindowSize = () => {
   const [width, setWidth] = useState(
@@ -10,20 +9,14 @@ const useCurrentWindowSize = () => {
     typeof window === "undefined" ? 1 : window.innerHeight
   );
 
-  useEffect(() => {
+  const handleWindowResize = useDebouncedFn(() => {
     if (typeof window === "undefined") return;
 
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
+  }, 250);
 
-    const debouncedSetSize = debounce(() => {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
-    });
-
-    window.addEventListener("resize", debouncedSetSize);
-    return () => window.removeEventListener("resize", debouncedSetSize);
-  }, []);
+  useWindowResize(handleWindowResize);
 
   const size = [width, height];
   size.width = width;
