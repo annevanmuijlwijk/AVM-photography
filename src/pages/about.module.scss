@@ -2,14 +2,25 @@
 @import "../styles/mixins";
 
 .heroContainer {
-  @include small-width {
-    display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "heading"
+    "hero"
+    "content";
+
+  @include medium-width {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "heading hero"
+      "content hero";
   }
 }
 
-.heroContent {
+.headingWrapper {
   padding: $border-outer-space;
-  width: 100%;
+  padding-bottom: 0;
+  grid-area: heading;
 }
 
 .heading {
@@ -17,7 +28,6 @@
   font-weight: normal;
   text-transform: uppercase;
   line-height: 1;
-  text-align: center;
 
   @include small-width {
     font-size: 50px;
@@ -25,7 +35,6 @@
 
   @include medium-width {
     font-size: 60px;
-    text-align: left;
   }
 
   @include large-width {
@@ -33,11 +42,34 @@
   }
 }
 
+.content {
+  grid-area: content;
+  font-size: 20px;
+  margin-top: 40px;
+  padding: $border-outer-space;
+
+  max-width: 27em;
+
+  @include medium-width {
+    margin-top: 30vh;
+
+    padding-right: calc(#{$border-outer-space} * 2);
+    font-size: 24px;
+  }
+}
+
+.contentParagraph {
+  .contentParagraph + & {
+    margin-top: $border-outer-space;
+  }
+}
+
 .hero {
+  grid-area: hero;
   width: 100%;
   margin-top: $border-outer-space;
 
-  @include small-width {
+  @include medium-width {
     margin-top: 0;
   }
 }
@@ -59,27 +91,10 @@
 
 .caption {
   font-family: $monospace;
-  margin-top: 1rem;
-  text-align: center;
 
-  @include small-width {
-    text-align: left;
-  }
-}
-
-.content {
-  font-size: 24px;
-  padding: $border-outer-space;
-  margin-top: calc(#{$border-outer-space} * 4);
+  padding: 1rem $border-outer-space 0;
 
   @include medium-width {
-    width: 75%;
-    font-size: 36px;
-  }
-}
-
-.contentParagraph {
-  .contentParagraph + & {
-    margin-top: $border-outer-space;
+    padding: 1rem $border-outer-space 0 0;
   }
 }
