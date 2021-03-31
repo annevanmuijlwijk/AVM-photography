@@ -27,7 +27,6 @@ const IndexPage = ({
       seoTitle,
       seoDescription,
       heroImage,
-      heroImageCaption,
       content,
     },
   },
@@ -52,9 +51,7 @@ const IndexPage = ({
             <Image fluid={heroImage.fluid} className={s.photo} />
           </div>
 
-          <figcaption className={s.caption}>
-            {heroImageCaption?.heroImageCaption}
-          </figcaption>
+          <figcaption className={s.caption}></figcaption>
         </figure>
       </div>
     </Layout>
@@ -79,9 +76,6 @@ export const pageQuery = graphql`
         fluid(maxWidth: 4000, background: "rgb:ffffff") {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
-      }
-      heroImageCaption {
-        heroImageCaption
       }
       content {
         raw
