@@ -21,6 +21,7 @@ const richTextOptions = {
 
 const IndexPage = ({
   data: {
+    contentfulGeneral: { email },
     contentfulAboutPage: {
       heading,
       seoTitle,
@@ -38,8 +39,12 @@ const IndexPage = ({
         description={seoDescription?.seoDescription || null}
       />
       <div className={s.heroContainer}>
-        <div className={s.heroContent}>
+        <div className={s.headingWrapper}>
           <h1 className={s.heading}>{heading}</h1>
+        </div>
+
+        <div className={s.content}>
+          {documentToReactComponents(JSON.parse(content.raw), richTextOptions)}
         </div>
 
         <figure className={s.hero}>
@@ -52,9 +57,6 @@ const IndexPage = ({
           </figcaption>
         </figure>
       </div>
-      <div className={s.content}>
-        {documentToReactComponents(JSON.parse(content.raw), richTextOptions)}
-      </div>
     </Layout>
   );
 };
@@ -63,6 +65,9 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   {
+    contentfulGeneral {
+      email
+    }
     contentfulAboutPage {
       title
       seoTitle
