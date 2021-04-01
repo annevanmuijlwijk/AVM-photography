@@ -1,6 +1,69 @@
 @import "../styles/values";
 @import "../styles/mixins";
 
+.splashScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $gallery;
+  color: $cod-gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $border-outer-space;
+  z-index: 4;
+
+  @keyframes dissapear {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    99% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(30px);
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+
+  animation: dissapear 1s $ease-out-expo forwards;
+  animation-delay: 3s;
+}
+
+.splashScreenTitle {
+  font-size: 28px;
+  text-align: center;
+  max-width: 27em;
+  line-height: 1.5;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  animation: fadeIn 2s $ease-out-expo forwards;
+  animation-delay: 1s;
+
+  @include medium-width {
+    font-size: 36px;
+  }
+}
+
 .header {
   position: fixed;
   top: calc(#{$border-outer-space} - 1px);
@@ -18,8 +81,13 @@
   border-bottom: none;
 }
 
-.logo {
+.logoWrapper {
+  height: 100%;
   padding-left: $border-outer-space;
+}
+.logo {
+  height: 100%;
+  width: auto;
 }
 
 .nav {
@@ -56,6 +124,7 @@
   height: 100vh;
 
   border: #{$border-outer-space} solid $gallery;
+  border-bottom-width: $border-outer-bottom-space;
   pointer-events: none;
 }
 
@@ -71,12 +140,35 @@
   pointer-events: none;
 }
 
+.contact {
+  position: fixed;
+  left: 50%;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  bottom: 0;
+  height: $border-outer-bottom-space;
+  font-size: 0.75rem;
+  transform: translateX(-50%);
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem $border-outer-space;
+}
+
+.contactItem {
+  margin: 0 4px;
+  text-align: center;
+}
+
 .mainOuter {
   padding: calc(#{$border-outer-space} + #{$header-height}) $border-outer-space
-    $border-outer-space;
+    $border-outer-bottom-space;
 }
 
 .mainInner {
   position: relative;
-  min-height: calc(100vh - #{$header-height} - (#{$border-outer-space} * 2));
+  min-height: calc(
+    100vh - #{$header-height} - (#{$border-outer-space} + #{$border-outer-bottom-space})
+  );
 }

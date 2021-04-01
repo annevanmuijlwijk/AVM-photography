@@ -16,9 +16,12 @@ $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 // GENERAL
 $header-height: 40px;
 $border-outer-space: 3vmin;
+$border-outer-bottom-space: 2.75rem;
 $border-height: calc(
-  100vh - #{$header-height} - (#{$border-outer-space} * 2) + 2px
+  100vh - #{$header-height} - (
+      #{$border-outer-space} + #{$border-outer-bottom-space}
+    ) + 2px
 );
 $border-inner-space: calc(
-  100vh - #{$header-height} - (#{$border-outer-space} * 2)
+  100vh - #{$header-height} - (#{$border-outer-space} + #{$border-outer-bottom-space})
 );

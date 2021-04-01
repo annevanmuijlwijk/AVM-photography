@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 
 import mergeClassNames from "../lib/template/merge-class-names";
+
+import Logo from "../images/logo.svg";
 
 import "../styles/main.scss";
 import s from "./layout.module.scss";
@@ -10,6 +12,17 @@ import s from "./layout.module.scss";
 const pageGroups = ["projects", "about"];
 
 const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    {
+      contentfulGeneral {
+        email
+        phone
+      }
+    }
+  `);
+  const { phone, email } = data?.contentfulGeneral;
+  const currentYear = new Date().getFullYear();
+
   const activePageGroup =
     pageGroups.find((group) => {
       if (typeof window === "undefined") return false;
@@ -18,9 +31,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <div className={s.splashScreen}>
+        <div className={s.splashScreenTitle}>
+          Anne van Muijlwijk Photography
+        </div>
+      </div>
       <header className={s.header}>
-        <Link to="/" className={s.logo}>
-          AVM
+        <Link
+          to="/"
+          className={s.logoWrapper}
+          title="Anne van Muijlwijk Photography"
+        >
+          <Logo className={s.logo} />
         </Link>
         <nav className={s.nav}>
           <Link
@@ -47,6 +69,29 @@ const Layout = ({ children }) => {
       </header>
       <div className={s.borderInner}></div>
       <div className={s.borderOuter}></div>
+      <div className={s.contact}>
+        <a href={`mailto:${email}`} className={s.contactItem}>
+          {email}
+        </a>
+        |
+        <a href={`tel:${phone}`} className={s.contactItem}>
+          {phone}
+        </a>
+        |
+        <a
+          href="https://instagram.com/annevanmuijlwijk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={s.contactItem}
+        >
+          @annevanmuijlwijk
+        </a>
+        |
+        <div className={s.contactItem}>
+          2021 {currentYear > 2021 ? `- ${currentYear}` : ""} © Anne van
+          Muijlwijk
+        </div>
+      </div>
       <main className={s.mainOuter}>
         <div className={s.mainInner}>{children}</div>
       </main>
