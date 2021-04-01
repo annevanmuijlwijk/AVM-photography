@@ -84,10 +84,36 @@
 .logoWrapper {
   height: 100%;
   padding-left: $border-outer-space;
+  display: flex;
+  align-items: center;
 }
 .logo {
   height: 100%;
   width: auto;
+  display: none;
+  stroke-width: 2;
+
+  circle {
+    fill: $gallery;
+    stroke: $cod-gray;
+    stroke-width: 1;
+  }
+  path {
+    stroke: $cod-gray;
+    stroke-width: 1;
+  }
+
+  @include small-width {
+    display: block;
+  }
+}
+
+.logoText {
+  transform: translateY(-1px);
+
+  @include small-width {
+    margin-left: 8px;
+  }
 }
 
 .nav {
@@ -141,7 +167,8 @@
 }
 
 .contact {
-  position: fixed;
+  pointer-events: all;
+  position: absolute;
   left: 50%;
   width: fit-content;
   display: flex;
@@ -149,11 +176,15 @@
   bottom: 0;
   height: $border-outer-bottom-space;
   font-size: 0.75rem;
-  transform: translateX(-50%);
+  transform: translate(-50%, 100%);
   z-index: 2;
   align-items: center;
   justify-content: center;
   padding: 0.5rem $border-outer-space;
+
+  @include medium-width {
+    font-size: 0.875rem;
+  }
 }
 
 .contactItem {
