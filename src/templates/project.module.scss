@@ -35,9 +35,7 @@
 .descriptionParagraph {
   font-family: $monospace;
 
-  .descriptionParagraph + & {
-    margin-top: 1em;
-  }
+  margin-top: 1em;
 }
 
 .photoGroups {
