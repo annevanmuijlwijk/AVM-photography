@@ -46,6 +46,11 @@ const IndexPage = ({
 
         <div className={s.content}>
           {documentToReactComponents(JSON.parse(content.raw), richTextOptions)}
+          {email && (
+            <a className={s.email} href={`mailto:${email}`}>
+              Send me an email
+            </a>
+          )}
         </div>
 
         <figure className={s.hero}>
