@@ -12,7 +12,9 @@ import s from "./about.module.scss";
 const richTextOptions = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => (
-      <p className={s.contentParagraph}>{children}</p>
+      <p key={children} className={s.contentParagraph}>
+        {children}
+      </p>
     ),
   },
   renderText: (text) =>

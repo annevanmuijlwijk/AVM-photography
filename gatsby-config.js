@@ -1,7 +1,7 @@
 const contentfulConfig = {
-  spaceId: process.env.NODE_ENV === "master" ? "79mt3m3eaftp" : "zo73pbduz6aq",
+  spaceId: process.env.NODE_ENV === "develop" ? "79mt3m3eaftp" : "zo73pbduz6aq",
   accessToken:
-    process.env.NODE_ENV === "master"
+    process.env.NODE_ENV === "develop"
       ? "Hs6bicMR2GSQ7iXI-Kcs_PG1p9HBaTH6-9hIZnHNsEM"
       : "0illIhccDTTfGRCFDwJE8gfc3AUePBhzvApZMMRnfVY",
   environment: "master",
