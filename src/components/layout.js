@@ -52,6 +52,7 @@ const Layout = ({ children }) => {
           title="Anne van Muijlwijk Photography"
         >
           <Logo className={s.logo} />
+          <span className={s.logoText}>avm.photography</span>
         </Link>
         <nav className={s.nav}>
           <Link
@@ -77,30 +78,32 @@ const Layout = ({ children }) => {
         </nav>
       </header>
       <div className={s.borderInner}></div>
-      <div className={s.borderOuter}></div>
-      <div className={s.contact}>
-        <a href={`mailto:${email}`} className={s.contactItem}>
-          {email}
-        </a>
-        |
-        <a href={`tel:${phone}`} className={s.contactItem}>
-          {phone}
-        </a>
-        |
-        <a
-          href="https://instagram.com/annevanmuijlwijk"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={s.contactItem}
-        >
-          @annevanmuijlwijk
-        </a>
-        |
-        <div className={s.contactItem}>
-          2021 {currentYear > 2021 ? `- ${currentYear}` : ""} © Anne van
-          Muijlwijk
+      <div className={s.borderOuter}>
+        <div className={s.contact}>
+          <a href={`mailto:${email}`} className={s.contactItem}>
+            {email}
+          </a>
+          |
+          <a href={`tel:${phone}`} className={s.contactItem}>
+            {phone}
+          </a>
+          |
+          <a
+            href="https://instagram.com/annevanmuijlwijk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={s.contactItem}
+          >
+            @annevanmuijlwijk
+          </a>
+          |
+          <div className={s.contactItem}>
+            2021 {currentYear > 2021 ? `- ${currentYear}` : ""} © Anne van
+            Muijlwijk
+          </div>
         </div>
       </div>
+
       <main className={s.mainOuter}>
         <div className={s.mainInner}>{children}</div>
       </main>
