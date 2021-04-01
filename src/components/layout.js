@@ -36,12 +36,13 @@ const Layout = ({ children }) => {
       {!seenSplash && (
         <div className={s.splashScreen}>
           <div
-            className={s.splashScreenTitle}
+            className={s.splashScreenContent}
             onAnimationEnd={() => {
               seenSplash = true;
             }}
           >
-            Anne van Muijlwijk Photography
+            <Logo className={s.splashScreenLogo} />
+            <span className={s.splashScreenText}>avm.photography</span>
           </div>
         </div>
       )}
