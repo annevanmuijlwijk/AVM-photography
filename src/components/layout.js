@@ -11,6 +11,8 @@ import s from "./layout.module.scss";
 
 const pageGroups = ["projects", "about"];
 
+let seenSplash = false;
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     {
@@ -31,11 +33,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className={s.splashScreen}>
-        <div className={s.splashScreenTitle}>
-          Anne van Muijlwijk Photography
+      {!seenSplash && (
+        <div className={s.splashScreen}>
+          <div
+            className={s.splashScreenTitle}
+            onAnimationEnd={() => {
+              seenSplash = true;
+            }}
+          >
+            Anne van Muijlwijk Photography
+          </div>
         </div>
-      </div>
+      )}
       <header className={s.header}>
         <Link
           to="/"
